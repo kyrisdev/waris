@@ -21,120 +21,63 @@
         --danger: #c0392b;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        background: var(--bg);
-        color: var(--paper);
-        font-family: 'Space Grotesk', sans-serif;
-        min-height: 100vh;
-        padding-bottom: 100px;
-    }
-    header {
-        background: linear-gradient(180deg, var(--bg2), var(--bg));
-        padding: 18px 20px 22px;
-        border-bottom: 3px solid var(--accent);
-        position: relative;
-        overflow: hidden;
-    }
-    header::after {
-        content: '';
-        position: absolute;
-        top: -40px; right: -40px;
-        width: 140px; height: 140px;
-        background: radial-gradient(circle, rgba(226,166,59,0.18), transparent 70%);
-    }
-   .brand-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
+    body { background: var(--bg); color: var(--paper); font-family: 'Space Grotesk', sans-serif; min-height: 100vh; padding-bottom: 100px; }
+    header { background: linear-gradient(180deg, var(--bg2), var(--bg)); padding: 18px 20px 22px; border-bottom: 3px solid var(--accent); position: relative; overflow: hidden; }
+    header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(226,166,59,0.18), transparent 70%); }
+  .brand-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
     header h1 { font-size: 26px; font-weight: 700; margin-top: 4px; }
     header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
     #jam { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); margin-top: 10px; }
     main { max-width: 480px; margin: 0 auto; padding: 20px 16px; }
     section { margin-bottom: 22px; }
-   .section-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; display: block; }
-   .cust-row { display: flex; gap: 10px; }
-   .cust-field { flex: 1; }
-   .cust-field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
-   .cust-field input {
-        width: 100%; background: var(--bg2); border: 1.5px solid #35312a; border-radius: 10px;
-        padding: 10px 12px; color: var(--paper); font-family: 'Space Grotesk'; font-size: 15px;
-        outline: none; transition: border-color 0.2s;
-    }
-   .cust-field input:focus { border-color: var(--accent); }
-   .kategori-title {
-        font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px;
-        color: var(--accent); margin: 18px 0 8px; display: flex; align-items: center; gap: 8px;
-    }
-   .menu-item {
-        display: flex; align-items: center; justify-content: space-between;
-        background: var(--bg2); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
-        border: 1.5px solid #302c25;
-    }
-   .menu-info.menu-name { font-weight: 600; font-size: 15px; }
-   .menu-info.menu-price { font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--accent); margin-top: 2px; }
-   .qty-control { display: flex; align-items: center; gap: 10px; }
-   .qty-btn {
-        width: 32px; height: 32px; border-radius: 50%; border: none; background: #2f2a22;
-        color: var(--accent); font-size: 18px; font-weight: 700; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        transition: transform 0.15s, background 0.15s;
-    }
-   .qty-btn:active { transform: scale(0.88); }
-   .qty-btn.plus:hover { background: var(--accent); color: var(--bg); }
-   .qty-val { min-width: 22px; text-align: center; font-family: 'Space Mono', monospace; font-size: 15px; }
-    #tambahBtn {
-        width: 100%; margin-top: 6px; padding: 14px; border: none; border-radius: 12px;
-        background: var(--accent); color: var(--bg); font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px;
-        cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-    }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; display: block; }
+  .cust-row { display: flex; gap: 10px; }
+  .cust-field { flex: 1; }
+  .cust-field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .cust-field input { width: 100%; background: var(--bg2); border: 1.5px solid #35312a; border-radius: 10px; padding: 10px 12px; color: var(--paper); font-family: 'Space Grotesk'; font-size: 15px; outline: none; transition: border-color 0.2s; }
+  .cust-field input:focus { border-color: var(--accent); }
+  .kategori-title { font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px; color: var(--accent); margin: 18px 0 8px; display: flex; align-items: center; gap: 8px; }
+  .menu-item { display: flex; align-items: center; justify-content: space-between; background: var(--bg2); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; border: 1.5px solid #302c25; }
+  .menu-info.menu-name { font-weight: 600; font-size: 15px; }
+  .menu-info.menu-price { font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--accent); margin-top: 2px; }
+  .qty-control { display: flex; align-items: center; gap: 10px; }
+  .qty-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: #2f2a22; color: var(--accent); font-size: 18px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s, background 0.15s; }
+  .qty-btn:active { transform: scale(0.88); }
+  .qty-btn.plus:hover { background: var(--accent); color: var(--bg); }
+  .qty-val { min-width: 22px; text-align: center; font-family: 'Space Mono', monospace; font-size: 15px; }
+    #tambahBtn, #batalBtn { width: 100%; margin-top: 6px; padding: 14px; border: none; border-radius: 12px; font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    #tambahBtn { background: var(--accent); color: var(--bg); }
     #tambahBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(226,166,59,0.25); }
-    #tambahBtn:active { transform: scale(0.97); }
+    #batalBtn { background: var(--danger); color: #fff; display: none; }
+    #batalBtn.show { display: block; }
+    #tambahBtn:active, #batalBtn:active { transform: scale(0.97); }
     #tambahBtn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
-   .tape-wrap { position: relative; }
-   .tape {
-        background: var(--paper); color: var(--ink); font-family: 'Space Mono', monospace;
-        font-size: 13px; padding: 18px 16px 10px; border-radius: 3px 3px 0 0;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-        min-height: 60px;
-    }
-   .tape-center { text-align: center; }
-   .tape.toko { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
-   .tape.alamat { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
-   .tape.dash { border: none; border-top: 1.5px dashed var(--paper-line); margin: 10px 0; }
-   .tape-line { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; animation: printIn 0.35s ease; }
-   .tape-line.nm { flex: 1; }
+  .tape-wrap { position: relative; }
+  .tape { background: var(--paper); color: var(--ink); font-family: 'Space Mono', monospace; font-size: 13px; padding: 18px 16px 10px; border-radius: 3px 3px 0 0; box-shadow: 0 10px 30px rgba(0,0,0,0.35); min-height: 60px; }
+  .tape-center { text-align: center; }
+  .tape.toko { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+  .tape.alamat { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+  .tape.meta { font-size: 11px; color: var(--ink-soft); margin-top: 4px; }
+  .tape.dash { border: none; border-top: 1.5px dashed var(--paper-line); margin: 10px 0; }
+  .tape-line { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; animation: printIn 0.35s ease; align-items: center; }
+  .tape-line.nm { flex: 1; }
+  .btn-hapus { background: var(--danger); color: #fff; border: none; border-radius: 6px; font-size: 10px; padding: 3px 6px; cursor: pointer; font-family: 'Space Mono'; }
     @keyframes printIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-   .tape-empty { text-align: center; color: var(--ink-soft); font-size: 12.5px; padding: 14px 0; }
-   .tape.total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 14.5px; margin-top: 8px; }
-   .tape.sub-row { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; color: var(--ink-soft); }
-   .torn {
-        height: 14px;
-        background:
-            linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x,
-            linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x;
-        background-position: 0 0, 6px 0;
-        filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
-    }
-   .pay-box { background: var(--bg2); border-radius: 12px; padding: 16px; border: 1.5px solid #302c25; }
-   .pay-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-   .pay-row.label { font-size: 13px; color: var(--muted); }
-   .pay-row.value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
-    #bayarInput {
-        width: 100%; background: var(--bg); border: 1.5px solid #35312a; border-radius: 10px;
-        padding: 12px; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 16px;
-        outline: none; margin-top: 4px;
-    }
+  .tape-empty { text-align: center; color: var(--ink-soft); font-size: 12.5px; padding: 14px 0; }
+  .tape.total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 14.5px; margin-top: 8px; }
+  .tape.sub-row { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; color: var(--ink-soft); }
+  .torn { height: 14px; background: linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x, linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x; background-position: 0 0, 6px 0; filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3)); }
+  .pay-box { background: var(--bg2); border-radius: 12px; padding: 16px; border: 1.5px solid #302c25; }
+  .pay-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .pay-row.label { font-size: 13px; color: var(--muted); }
+  .pay-row.value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
+    #bayarInput { width: 100%; background: var(--bg); border: 1.5px solid #35312a; border-radius: 10px; padding: 12px; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 16px; outline: none; margin-top: 4px; }
     #bayarInput:focus { border-color: var(--accent); }
-    #hitungBtn {
-        width: 100%; margin-top: 12px; padding: 14px; border: none; border-radius: 12px;
-        background: var(--accent-deep); color: #fff; font-weight: 700; font-size: 15px;
-        cursor: pointer; transition: transform 0.2s;
-    }
+    #hitungBtn { width: 100%; margin-top: 12px; padding: 14px; border: none; border-radius: 12px; background: var(--accent-deep); color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; transition: transform 0.2s; }
     #hitungBtn:active { transform: scale(0.97); }
-   .warn { color: var(--danger); font-size: 12.5px; margin-top: 8px; display: none; }
-   .warn.show { display: block; animation: printIn 0.3s ease; }
-    #resetBtn {
-        width: 100%; margin-top: 10px; padding: 13px; border-radius: 12px;
-        background: transparent; border: 1.5px solid var(--muted); color: var(--paper);
-        font-family: 'Space Grotesk'; font-size: 14px; cursor: pointer; display: none;
-    }
+  .warn { color: var(--danger); font-size: 12.5px; margin-top: 8px; display: none; }
+  .warn.show { display: block; animation: printIn 0.3s ease; }
+    #resetBtn { width: 100%; margin-top: 10px; padding: 13px; border-radius: 12px; background: transparent; border: 1.5px solid var(--muted); color: var(--paper); font-family: 'Space Grotesk'; font-size: 14px; cursor: pointer; display: none; }
     #resetBtn.show { display: block; animation: printIn 0.3s ease; }
     ::selection { background: var(--accent); color: var(--bg); }
 </style>
@@ -145,7 +88,7 @@
     <span class="brand-eyebrow">Program Mesin Kasir</span>
     <h1>kopi.in</h1>
     <p>Masuk. Ngopi. Nikmati.</p>
-    <div id="jam">--:--:--</div>
+    <div id="jam">--:--</div>
 </header>
 
 <main>
@@ -167,6 +110,7 @@
         <span class="section-label">Pilih Menu</span>
         <div id="menuList"></div>
         <button id="tambahBtn" onclick="tambahKeStruk()">+ Tambah ke Struk</button>
+        <button id="batalBtn" onclick="batalSemua()">🗑️ Batalkan Semua</button>
     </section>
 
     <section class="tape-wrap">
@@ -175,6 +119,7 @@
             <div class="tape-center">
                 <div class="toko">kopi.in</div>
                 <div class="alamat">Bandar Lampung, Indonesia</div>
+                <div class="meta" id="metaStruk"></div>
             </div>
             <hr class="dash">
             <div id="tapeBody"><div class="tape-empty">belum ada pesanan...</div></div>
@@ -237,9 +182,18 @@ let qtyState = {};
 let orderList = [];
 let totalBayar = 0;
 let selesai = false;
+let nomorTransaksi = 1;
 
 function formatRupiah(n) {
     return "Rp." + n.toLocaleString('id-ID');
+}
+
+function generateNoTransaksi() {
+    const tgl = new Date();
+    const y = tgl.getFullYear();
+    const m = String(tgl.getMonth()+1).padStart(2,'0');
+    const d = String(tgl.getDate()).padStart(2,'0');
+    return `KPI-${y}${m}${d}-${String(nomorTransaksi).padStart(4,'0')}`;
 }
 
 function renderJam() {
@@ -293,7 +247,7 @@ function tambahKeStruk() {
         const porsi = qtyState[item.id];
         if (porsi > 0) {
             const subtotal = item.harga * porsi;
-            orderList.push({ menu: item.nama, porsi, subtotal });
+            orderList.push({ id: item.id, menu: item.nama, porsi, subtotal });
             totalBayar += subtotal;
             qtyState[item.id] = 0;
             adaYangDitambah = true;
@@ -302,20 +256,44 @@ function tambahKeStruk() {
     if (!adaYangDitambah) return;
     renderMenu();
     renderTape();
+    document.getElementById('batalBtn').classList.add('show');
+}
+
+function hapusItem(index) {
+    if (selesai) return;
+    totalBayar -= orderList[index].subtotal;
+    orderList.splice(index, 1);
+    renderTape();
+    if (orderList.length === 0) {
+        document.getElementById('batalBtn').classList.remove('show');
+    }
+}
+
+function batalSemua() {
+    if (selesai) return;
+    orderList = [];
+    totalBayar = 0;
+    renderTape();
+    document.getElementById('batalBtn').classList.remove('show');
 }
 
 function renderTape() {
     const body = document.getElementById('tapeBody');
+    document.getElementById('metaStruk').textContent = `No: ${generateNoTransaksi()} | ${new Date().toLocaleString('id-ID')}`;
     if (orderList.length === 0) {
         body.innerHTML = '<div class="tape-empty">belum ada pesanan...</div>';
         document.getElementById('totalLabel').textContent = formatRupiah(0);
         return;
     }
     body.innerHTML = '';
-    orderList.forEach(item => {
+    orderList.forEach((item, index) => {
         const line = document.createElement('div');
         line.className = 'tape-line';
-        line.innerHTML = `<span class="nm">${item.menu} x${item.porsi}</span><span>${formatRupiah(item.subtotal)}</span>`;
+        line.innerHTML = `
+            <span class="nm">${item.menu} x${item.porsi}</span>
+            <span>${formatRupiah(item.subtotal)}</span>
+            <button class="btn-hapus" onclick="hapusItem(${index})">X</button>
+        `;
         body.appendChild(line);
     });
     const totalRow = document.createElement('div');
@@ -330,6 +308,7 @@ function hitungBayar() {
     const input = document.getElementById('bayarInput');
     const uangBayar = parseInt(input.value, 10);
     const warn = document.getElementById('warnText');
+
     if (isNaN(uangBayar)) {
         warn.textContent = 'masukkan nominal uang yang valid';
         warn.classList.add('show');
@@ -337,41 +316,51 @@ function hitungBayar() {
     }
     if (uangBayar < totalBayar) {
         const kurang = totalBayar - uangBayar;
-        warn.textContent = `uang kurang, kurang ${formatRupiah(kurang)}`;
+        warn.textContent = `uang kurang, kurang ${formatRupiah(kurang)}`; // ✅ Validasi
         warn.classList.add('show');
         return;
     }
     warn.classList.remove('show');
+
     const kembalian = uangBayar - totalBayar;
     const nama = document.getElementById('namaPembeli').value || '-';
     const meja = document.getElementById('nomorMeja').value || '-';
+
     const body = document.getElementById('tapeBody');
     const info = document.createElement('div');
     info.className = 'tape-line';
     info.style.flexDirection = 'column';
+    info.style.alignItems = 'flex-start';
     info.innerHTML = `<span>nama : ${nama}</span><span>meja : ${meja}</span>`;
     body.insertBefore(info, body.firstChild);
+
     const hr = document.createElement('hr');
     hr.className = 'dash';
     body.appendChild(hr);
+
     const bayarRow = document.createElement('div');
     bayarRow.className = 'sub-row';
     bayarRow.innerHTML = `<span>BAYAR</span><span>${formatRupiah(uangBayar)}</span>`;
     body.appendChild(bayarRow);
+
     const kembalianRow = document.createElement('div');
     kembalianRow.className = 'sub-row';
     kembalianRow.style.fontWeight = '700';
     kembalianRow.style.color = 'var(--ink)';
     kembalianRow.innerHTML = `<span>KEMBALIAN</span><span>${formatRupiah(kembalian)}</span>`;
     body.appendChild(kembalianRow);
+
     selesai = true;
     document.getElementById('tambahBtn').disabled = true;
     document.getElementById('hitungBtn').style.display = 'none';
+    document.getElementById('batalBtn').style.display = 'none';
     input.disabled = true;
+    document.querySelectorAll('.btn-hapus').forEach(btn => btn.style.display = 'none');
     document.getElementById('resetBtn').classList.add('show');
 }
 
 function resetTransaksi() {
+    nomorTransaksi++;
     qtyState = {};
     orderList = [];
     totalBayar = 0;
