@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R Zone — Kasir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <span class="brand-eyebrow">Program Mesin Kasir</span>
+    <h1>R Zone</h1>
+    <p>Bandar Lampung, Indonesia</p>
+    <div id="jam">--:--:--</div>
+</header>
+
+<main>
+    <section>
+        <span class="section-label">Data Pembeli</span>
+        <div class="cust-row">
+            <div class="cust-field">
+                <label>Nama</label>
+                <input type="text" id="namaPembeli" placeholder="nama pembeli">
+            </div>
+            <div class="cust-field">
+                <label>No. Meja</label>
+                <input type="text" id="nomorMeja" placeholder="meja">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <span class="section-label">Pilih Menu</span>
+        <div id="menuList"></div>
+        <button id="tambahBtn" onclick="tambahKeStruk()">+ Tambah ke Struk</button>
+    </section>
+
+    <section class="tape-wrap">
+        <span class="section-label">Struk</span>
+        <div class="tape" id="tape">
+            <div class="tape-center">
+                <div class="toko">R ZONE</div>
+                <div class="alamat">Bandar Lampung, Indonesia</div>
+            </div>
+            <hr class="dash">
+            <div id="tapeBody"><div class="tape-empty">belum ada pesanan...</div></div>
+        </div>
+        <div class="torn"></div>
+    </section>
+
+    <section>
+        <span class="section-label">Pembayaran</span>
+        <div class="pay-box">
+            <div class="pay-row">
+                <span class="label">Total</span>
+                <span class="value" id="totalLabel">Rp.0</span>
+            </div>
+            <label style="font-size:12px; color:var(--muted);">Uang bayar</label>
+            <input type="number" id="bayarInput" placeholder="masukkan nominal">
+            <p class="warn" id="warnText">uang gak cukup, kurang Rp.0</p>
+            <button id="hitungBtn" onclick="hitungBayar()">Hitung &amp; Cetak Struk</button>
+            <button id="resetBtn" onclick="resetTransaksi()">Transaksi Baru</button>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
