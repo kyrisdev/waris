@@ -3,17 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>warkop ky — Kasir</title>
+<title>kopi.in — Kasir</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+    :root {
+        --bg: #1b1815;
+        --bg2: #23201b;
+        --paper: #fbf6e9;
+        --paper-line: #e4dcc4;
+        --ink: #2b2620;
+        --ink-soft: #6b6355;
+        --accent: #e2a63b;
+        --accent-deep: #b9451b;
+        --muted: #8a8175;
+        --danger: #c0392b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        background: var(--bg);
+        color: var(--paper);
+        font-family: 'Space Grotesk', sans-serif;
+        min-height: 100vh;
+        padding-bottom: 100px;
+    }
+    header {
+        background: linear-gradient(180deg, var(--bg2), var(--bg));
+        padding: 18px 20px 22px;
+        border-bottom: 3px solid var(--accent);
+        position: relative;
+        overflow: hidden;
+    }
+    header::after {
+        content: '';
+        position: absolute;
+        top: -40px; right: -40px;
+        width: 140px; height: 140px;
+        background: radial-gradient(circle, rgba(226,166,59,0.18), transparent 70%);
+    }
+   .brand-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
+    header h1 { font-size: 26px; font-weight: 700; margin-top: 4px; }
+    header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    #jam { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); margin-top: 10px; }
+    main { max-width: 480px; margin: 0 auto; padding: 20px 16px; }
+    section { margin-bottom: 22px; }
+   .section-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; display: block; }
+   .cust-row { display: flex; gap: 10px; }
+   .cust-field { flex: 1; }
+   .cust-field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+   .cust-field input {
+        width: 100%; background: var(--bg2); border: 1.5px solid #35312a; border-radius: 10px;
+        padding: 10px 12px; color: var(--paper); font-family: 'Space Grotesk'; font-size: 15px;
+        outline: none; transition: border-color 0.2s;
+    }
+   .cust-field input:focus { border-color: var(--accent); }
+   .kategori-title {
+        font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px;
+        color: var(--accent); margin: 18px 0 8px; display: flex; align-items: center; gap: 8px;
+    }
+   .menu-item {
+        display: flex; align-items: center; justify-content: space-between;
+        background: var(--bg2); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+        border: 1.5px solid #302c25;
+    }
+   .menu-info.menu-name { font-weight: 600; font-size: 15px; }
+   .menu-info.menu-price { font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--accent); margin-top: 2px; }
+   .qty-control { display: flex; align-items: center; gap: 10px; }
+   .qty-btn {
+        width: 32px; height: 32px; border-radius: 50%; border: none; background: #2f2a22;
+        color: var(--accent); font-size: 18px; font-weight: 700; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform 0.15s, background 0.15s;
+    }
+   .qty-btn:active { transform: scale(0.88); }
+   .qty-btn.plus:hover { background: var(--accent); color: var(--bg); }
+   .qty-val { min-width: 22px; text-align: center; font-family: 'Space Mono', monospace; font-size: 15px; }
+    #tambahBtn {
+        width: 100%; margin-top: 6px; padding: 14px; border: none; border-radius: 12px;
+        background: var(--accent); color: var(--bg); font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px;
+        cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #tambahBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(226,166,59,0.25); }
+    #tambahBtn:active { transform: scale(0.97); }
+    #tambahBtn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
+   .tape-wrap { position: relative; }
+   .tape {
+        background: var(--paper); color: var(--ink); font-family: 'Space Mono', monospace;
+        font-size: 13px; padding: 18px 16px 10px; border-radius: 3px 3px 0 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        min-height: 60px;
+    }
+   .tape-center { text-align: center; }
+   .tape.toko { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+   .tape.alamat { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+   .tape.dash { border: none; border-top: 1.5px dashed var(--paper-line); margin: 10px 0; }
+   .tape-line { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; animation: printIn 0.35s ease; }
+   .tape-line.nm { flex: 1; }
+    @keyframes printIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+   .tape-empty { text-align: center; color: var(--ink-soft); font-size: 12.5px; padding: 14px 0; }
+   .tape.total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 14.5px; margin-top: 8px; }
+   .tape.sub-row { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; color: var(--ink-soft); }
+   .torn {
+        height: 14px;
+        background:
+            linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x,
+            linear-gradient(-135deg, var(--paper) 50%, transparent 50%) 0 0/12px 14px repeat-x;
+        background-position: 0 0, 6px 0;
+        filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
+    }
+   .pay-box { background: var(--bg2); border-radius: 12px; padding: 16px; border: 1.5px solid #302c25; }
+   .pay-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+   .pay-row.label { font-size: 13px; color: var(--muted); }
+   .pay-row.value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
+    #bayarInput {
+        width: 100%; background: var(--bg); border: 1.5px solid #35312a; border-radius: 10px;
+        padding: 12px; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 16px;
+        outline: none; margin-top: 4px;
+    }
+    #bayarInput:focus { border-color: var(--accent); }
+    #hitungBtn {
+        width: 100%; margin-top: 12px; padding: 14px; border: none; border-radius: 12px;
+        background: var(--accent-deep); color: #fff; font-weight: 700; font-size: 15px;
+        cursor: pointer; transition: transform 0.2s;
+    }
+    #hitungBtn:active { transform: scale(0.97); }
+   .warn { color: var(--danger); font-size: 12.5px; margin-top: 8px; display: none; }
+   .warn.show { display: block; animation: printIn 0.3s ease; }
+    #resetBtn {
+        width: 100%; margin-top: 10px; padding: 13px; border-radius: 12px;
+        background: transparent; border: 1.5px solid var(--muted); color: var(--paper);
+        font-family: 'Space Grotesk'; font-size: 14px; cursor: pointer; display: none;
+    }
+    #resetBtn.show { display: block; animation: printIn 0.3s ease; }
+    ::selection { background: var(--accent); color: var(--bg); }
+</style>
 </head>
 <body>
+
 <header>
     <span class="brand-eyebrow">Program Mesin Kasir</span>
-    <h1>Warkop Ky</h1>
-    <p>Bandar Lampung, Indonesia</p>
+    <h1>kopi.in</h1>
+    <p>Masuk. Ngopi. Nikmati.</p>
     <div id="jam">--:--:--</div>
 </header>
 
@@ -42,7 +173,7 @@
         <span class="section-label">Struk</span>
         <div class="tape" id="tape">
             <div class="tape-center">
-                <div class="toko">R ZONE</div>
+                <div class="toko">kopi.in</div>
                 <div class="alamat">Bandar Lampung, Indonesia</div>
             </div>
             <hr class="dash">
@@ -67,6 +198,196 @@
     </section>
 </main>
 
-<script src="script.js"></script>
+<script>
+const MENU = [
+    { kategori: "☕ Coffee", id: 1, nama: "Espresso", harga: 12000 },
+    { kategori: "☕ Coffee", id: 2, nama: "Americano", harga: 15000 },
+    { kategori: "☕ Coffee", id: 3, nama: "Cappuccino", harga: 18000 },
+    { kategori: "☕ Coffee", id: 4, nama: "Cafe Latte", harga: 18000 },
+    { kategori: "☕ Coffee", id: 5, nama: "Mochaccino", harga: 20000 },
+    { kategori: "☕ Coffee", id: 6, nama: "Caramel Latte", harga: 20000 },
+    { kategori: "☕ Coffee", id: 7, nama: "Vanilla Latte", harga: 20000 },
+    { kategori: "☕ Coffee", id: 8, nama: "Kopi Susu Gula Aren", harga: 18000 },
+    { kategori: "☕ Coffee", id: 9, nama: "V60", harga: 20000 },
+    { kategori: "☕ Coffee", id: 10, nama: "Vietnam Drip", harga: 16000 },
+    { kategori: "🥤 Non Coffee", id: 11, nama: "Matcha Latte", harga: 18000 },
+    { kategori: "🥤 Non Coffee", id: 12, nama: "Chocolate", harga: 18000 },
+    { kategori: "🥤 Non Coffee", id: 13, nama: "Red Velvet", harga: 18000 },
+    { kategori: "🥤 Non Coffee", id: 14, nama: "Taro Latte", harga: 18000 },
+    { kategori: "🥤 Non Coffee", id: 15, nama: "Thai Tea", harga: 15000 },
+    { kategori: "🥤 Non Coffee", id: 16, nama: "Lemon Tea", harga: 10000 },
+    { kategori: "🥤 Non Coffee", id: 17, nama: "Es Teh Manis", harga: 5000 },
+    { kategori: "🍴 Main Course", id: 18, nama: "Nasi Goreng", harga: 20000 },
+    { kategori: "🍴 Main Course", id: 19, nama: "Mie Goreng", harga: 15000 },
+    { kategori: "🍴 Main Course", id: 20, nama: "Mie Rebus", harga: 15000 },
+    { kategori: "🍴 Main Course", id: 21, nama: "Nasi Ayam Geprek", harga: 20000 },
+    { kategori: "🍴 Main Course", id: 22, nama: "Nasi Ayam Crispy", harga: 22000 },
+    { kategori: "🍴 Main Course", id: 23, nama: "Rice Bowl Chicken", harga: 22000 },
+    { kategori: "🍴 Main Course", id: 24, nama: "Rice Bowl Beef", harga: 25000 },
+    { kategori: "🍟 Snack", id: 25, nama: "Kentang Goreng", harga: 15000 },
+    { kategori: "🍟 Snack", id: 26, nama: "Chicken Wings", harga: 22000 },
+    { kategori: "🍟 Snack", id: 27, nama: "Sosis Bakar", harga: 12000 },
+    { kategori: "🍟 Snack", id: 28, nama: "Cireng", harga: 10000 },
+    { kategori: "🍟 Snack", id: 29, nama: "Siomay Dimsum", harga: 15000 },
+    { kategori: "🍟 Snack", id: 30, nama: "Mix Platter", harga: 30000 },
+    { kategori: "🍟 Snack", id: 31, nama: "Onion Ring", harga: 15000 },
+];
+
+let qtyState = {};
+let orderList = [];
+let totalBayar = 0;
+let selesai = false;
+
+function formatRupiah(n) {
+    return "Rp." + n.toLocaleString('id-ID');
+}
+
+function renderJam() {
+    const now = new Date();
+    document.getElementById('jam').textContent = now.toLocaleTimeString('id-ID');
+}
+renderJam();
+setInterval(renderJam, 1000);
+
+function renderMenu() {
+    const wrap = document.getElementById('menuList');
+    wrap.innerHTML = '';
+    let kategoriSekarang = '';
+    MENU.forEach(item => {
+        if (!(item.id in qtyState)) qtyState[item.id] = 0;
+        if (item.kategori!== kategoriSekarang) {
+            kategoriSekarang = item.kategori;
+            const kat = document.createElement('div');
+            kat.className = 'kategori-title';
+            kat.textContent = kategoriSekarang;
+            wrap.appendChild(kat);
+        }
+        const row = document.createElement('div');
+        row.className = 'menu-item';
+        row.innerHTML = `
+            <div class="menu-info">
+                <div class="menu-name">${item.nama}</div>
+                <div class="menu-price">${formatRupiah(item.harga)}</div>
+            </div>
+            <div class="qty-control">
+                <button class="qty-btn minus" onclick="ubahQty(${item.id}, -1)">−</button>
+                <span class="qty-val" id="qty-${item.id}">${qtyState[item.id]}</span>
+                <button class="qty-btn plus" onclick="ubahQty(${item.id}, 1)">+</button>
+            </div>
+        `;
+        wrap.appendChild(row);
+    });
+}
+
+function ubahQty(id, delta) {
+    if (selesai) return;
+    const next = (qtyState[id] || 0) + delta;
+    qtyState[id] = Math.max(0, next);
+    document.getElementById('qty-' + id).textContent = qtyState[id];
+}
+
+function tambahKeStruk() {
+    if (selesai) return;
+    let adaYangDitambah = false;
+    MENU.forEach(item => {
+        const porsi = qtyState[item.id];
+        if (porsi > 0) {
+            const subtotal = item.harga * porsi;
+            orderList.push({ menu: item.nama, porsi, subtotal });
+            totalBayar += subtotal;
+            qtyState[item.id] = 0;
+            adaYangDitambah = true;
+        }
+    });
+    if (!adaYangDitambah) return;
+    renderMenu();
+    renderTape();
+}
+
+function renderTape() {
+    const body = document.getElementById('tapeBody');
+    if (orderList.length === 0) {
+        body.innerHTML = '<div class="tape-empty">belum ada pesanan...</div>';
+        document.getElementById('totalLabel').textContent = formatRupiah(0);
+        return;
+    }
+    body.innerHTML = '';
+    orderList.forEach(item => {
+        const line = document.createElement('div');
+        line.className = 'tape-line';
+        line.innerHTML = `<span class="nm">${item.menu} x${item.porsi}</span><span>${formatRupiah(item.subtotal)}</span>`;
+        body.appendChild(line);
+    });
+    const totalRow = document.createElement('div');
+    totalRow.className = 'total-row';
+    totalRow.innerHTML = `<span>TOTAL</span><span>${formatRupiah(totalBayar)}</span>`;
+    body.appendChild(totalRow);
+    document.getElementById('totalLabel').textContent = formatRupiah(totalBayar);
+}
+
+function hitungBayar() {
+    if (orderList.length === 0) return;
+    const input = document.getElementById('bayarInput');
+    const uangBayar = parseInt(input.value, 10);
+    const warn = document.getElementById('warnText');
+    if (isNaN(uangBayar)) {
+        warn.textContent = 'masukkan nominal uang yang valid';
+        warn.classList.add('show');
+        return;
+    }
+    if (uangBayar < totalBayar) {
+        const kurang = totalBayar - uangBayar;
+        warn.textContent = `uang kurang, kurang ${formatRupiah(kurang)}`;
+        warn.classList.add('show');
+        return;
+    }
+    warn.classList.remove('show');
+    const kembalian = uangBayar - totalBayar;
+    const nama = document.getElementById('namaPembeli').value || '-';
+    const meja = document.getElementById('nomorMeja').value || '-';
+    const body = document.getElementById('tapeBody');
+    const info = document.createElement('div');
+    info.className = 'tape-line';
+    info.style.flexDirection = 'column';
+    info.innerHTML = `<span>nama : ${nama}</span><span>meja : ${meja}</span>`;
+    body.insertBefore(info, body.firstChild);
+    const hr = document.createElement('hr');
+    hr.className = 'dash';
+    body.appendChild(hr);
+    const bayarRow = document.createElement('div');
+    bayarRow.className = 'sub-row';
+    bayarRow.innerHTML = `<span>BAYAR</span><span>${formatRupiah(uangBayar)}</span>`;
+    body.appendChild(bayarRow);
+    const kembalianRow = document.createElement('div');
+    kembalianRow.className = 'sub-row';
+    kembalianRow.style.fontWeight = '700';
+    kembalianRow.style.color = 'var(--ink)';
+    kembalianRow.innerHTML = `<span>KEMBALIAN</span><span>${formatRupiah(kembalian)}</span>`;
+    body.appendChild(kembalianRow);
+    selesai = true;
+    document.getElementById('tambahBtn').disabled = true;
+    document.getElementById('hitungBtn').style.display = 'none';
+    input.disabled = true;
+    document.getElementById('resetBtn').classList.add('show');
+}
+
+function resetTransaksi() {
+    qtyState = {};
+    orderList = [];
+    totalBayar = 0;
+    selesai = false;
+    document.getElementById('bayarInput').value = '';
+    document.getElementById('bayarInput').disabled = false;
+    document.getElementById('warnText').classList.remove('show');
+    document.getElementById('tambahBtn').disabled = false;
+    document.getElementById('hitungBtn').style.display = 'block';
+    document.getElementById('resetBtn').classList.remove('show');
+    renderMenu();
+    renderTape();
+}
+
+renderMenu();
+renderTape();
+</script>
 </body>
 </html>
