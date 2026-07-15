@@ -1,89 +1,4 @@
-:root {
-        --bg: #1b1815;
-        --bg2: #23201b;
-        --paper: #fbf6e9;
-        --paper-line: #e4dcc4;
-        --ink: #2b2620;
-        --ink-soft: #6b6355;
-        --accent: #e2a63b;
-        --accent-deep: #b9451b;
-        --muted: #8a8175;
-        --danger: #c0392b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        background: var(--bg);
-        color: var(--paper);
-        font-family: 'Space Grotesk', sans-serif;
-        min-height: 100vh;
-        padding-bottom: 100px;
-    }
-
-    /* HEADER */
-    header {
-        background: linear-gradient(180deg, var(--bg2), var(--bg));
-        padding: 18px 20px 22px;
-        border-bottom: 3px solid var(--accent);
-        position: relative;
-        overflow: hidden;
-    }
-    header::after {
-        content: '';
-        position: absolute;
-        top: -40px; right: -40px;
-        width: 140px; height: 140px;
-        background: radial-gradient(circle, rgba(226,166,59,0.18), transparent 70%);
-    }
-    .brand-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
-    header h1 { font-size: 26px; font-weight: 700; margin-top: 4px; }
-    header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
-    #jam { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--muted); margin-top: 10px; }
-
-    main { max-width: 480px; margin: 0 auto; padding: 20px 16px; }
-
-    section { margin-bottom: 22px; }
-    .section-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; display: block; }
-
-    /* CUSTOMER FORM */
-    .cust-row { display: flex; gap: 10px; }
-    .cust-field { flex: 1; }
-    .cust-field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
-    .cust-field input {
-        width: 100%; background: var(--bg2); border: 1.5px solid #35312a; border-radius: 10px;
-        padding: 10px 12px; color: var(--paper); font-family: 'Space Grotesk'; font-size: 15px;
-        outline: none; transition: border-color 0.2s;
-    }
-    .cust-field input:focus { border-color: var(--accent); }
-
-    /* MENU */
-    .menu-item {
-        display: flex; align-items: center; justify-content: space-between;
-        background: var(--bg2); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
-        border: 1.5px solid #302c25;
-    }
-    .menu-info .menu-name { font-weight: 600; font-size: 15px; }
-    .menu-info .menu-price { font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--accent); margin-top: 2px; }
-    .qty-control { display: flex; align-items: center; gap: 10px; }
-    .qty-btn {
-        width: 32px; height: 32px; border-radius: 50%; border: none; background: #2f2a22;
-        color: var(--accent); font-size: 18px; font-weight: 700; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        transition: transform 0.15s, background 0.15s;
-    }
-    .qty-btn:active { transform: scale(0.88); }
-    .qty-btn.plus:hover { background: var(--accent); color: var(--bg); }
-    .qty-val { min-width: 22px; text-align: center; font-family: 'Space Mono', monospace; font-size: 15px; }
-
-    #tambahBtn {
-        width: 100%; margin-top: 6px; padding: 14px; border: none; border-radius: 12px;
-        background: var(--accent); color: var(--bg); font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px;
-        cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-    }
-    #tambahBtn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(226,166,59,0.25); }
-    #tambahBtn:active { transform: scale(0.97); }
-    #tambahBtn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
-
-    /* RECEIPT TAPE */
+/* RECEIPT TAPE */
     .tape-wrap { position: relative; }
     .tape {
         background: var(--paper); color: var(--ink); font-family: 'Space Mono', monospace;
@@ -95,13 +10,42 @@
     .tape .toko { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
     .tape .alamat { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
     .tape .dash { border: none; border-top: 1.5px dashed var(--paper-line); margin: 10px 0; }
-    .tape-line { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; animation: printIn 0.35s ease; }
-    .tape-line .nm { flex: 1; }
-    .tape-line span:last-child { min-width: 90px; text-align: right; } /* INI YANG BARU DITAMBAH */
+    
+    .tape-line{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin:4px 0;
+        animation: printIn 0.35s ease;
+    }
+
+    .tape-line .label{
+        width:120px;
+        font-weight:bold;
+    }
+
+    .tape-line .value{
+        text-align:right;
+        flex:1;
+    }
+
+    .tape-line .nm { flex: 1; } /* ini buat item menu biar tetep jalan */
+    .tape-line span:last-child { white-space: nowrap; } /* biar harga ga ketekuk */
+
     @keyframes printIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
     .tape-empty { text-align: center; color: var(--ink-soft); font-size: 12.5px; padding: 14px 0; }
-    .tape .total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 14.5px; margin-top: 8px; border-top: 1px dashed var(--paper-line); padding-top: 6px; }
+    
+    .tape .total-row { 
+        display: flex; 
+        justify-content: space-between; 
+        font-weight: 700; 
+        font-size: 14.5px; 
+        margin-top: 8px; 
+        border-top: 1px dashed var(--paper-line);
+        padding-top: 6px;
+    }
     .tape .sub-row { display: flex; justify-content: space-between; font-size: 13px; margin-top: 4px; color: var(--ink-soft); }
+    
     .torn {
         height: 14px;
         background:
@@ -110,32 +54,3 @@
         background-position: 0 0, 6px 0;
         filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
     }
-
-    /* PAYMENT */
-    .pay-box { background: var(--bg2); border-radius: 12px; padding: 16px; border: 1.5px solid #302c25; }
-    .pay-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-    .pay-row .label { font-size: 13px; color: var(--muted); }
-    .pay-row .value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
-    #bayarInput {
-        width: 100%; background: var(--bg); border: 1.5px solid #35312a; border-radius: 10px;
-        padding: 12px; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 16px;
-        outline: none; margin-top: 4px;
-    }
-    #bayarInput:focus { border-color: var(--accent); }
-    #hitungBtn {
-        width: 100%; margin-top: 12px; padding: 14px; border: none; border-radius: 12px;
-        background: var(--accent-deep); color: #fff; font-weight: 700; font-size: 15px;
-        cursor: pointer; transition: transform 0.2s;
-    }
-    #hitungBtn:active { transform: scale(0.97); }
-    .warn { color: var(--danger); font-size: 12.5px; margin-top: 8px; display: none; }
-    .warn.show { display: block; animation: printIn 0.3s ease; }
-
-    #resetBtn {
-        width: 100%; margin-top: 10px; padding: 13px; border-radius: 12px;
-        background: transparent; border: 1.5px solid var(--muted); color: var(--paper);
-        font-family: 'Space Grotesk'; font-size: 14px; cursor: pointer; display: none;
-    }
-    #resetBtn.show { display: block; animation: printIn 0.3s ease; }
-
-    ::selection { background: var(--accent); color: var(--bg); }
