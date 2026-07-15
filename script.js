@@ -124,15 +124,15 @@ function hitungBayar() {
     hr.className = 'dash';
     body.appendChild(hr);
 
+    // UDAH GUE UBAH JADI RATA KIRI KAN
     const bayarRow = document.createElement('div');
-    bayarRow.className = 'sub-row';
+    bayarRow.className = 'tape-line'; // ganti dari sub-row
     bayarRow.innerHTML = `<span>BAYAR</span><span>${formatRupiah(uangBayar)}</span>`;
     body.appendChild(bayarRow);
 
     const kembalianRow = document.createElement('div');
-    kembalianRow.className = 'sub-row';
+    kembalianRow.className = 'tape-line'; // ganti dari sub-row
     kembalianRow.style.fontWeight = '700';
-    kembalianRow.style.color = 'var(--ink)';
     kembalianRow.innerHTML = `<span>KEMBALIAN</span><span>${formatRupiah(kembalian)}</span>`;
     body.appendChild(kembalianRow);
 
