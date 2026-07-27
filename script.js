@@ -145,8 +145,7 @@ function renderTape() {
         body.appendChild(line);
     });
     const totalRow = document.createElement('div');
-    totalRow.className = 'tape-line';
-    totalRow.style.fontWeight='700';
+    totalRow.className = 'total-row';
     totalRow.innerHTML = `<span>TOTAL</span><span>${formatRupiah(totalBayar)}</span>`;
     body.appendChild(totalRow);
     document.getElementById('totalLabel').textContent = formatRupiah(totalBayar);
@@ -188,12 +187,12 @@ function hitungBayar() {
     body.appendChild(hr);
 
     const bayarRow = document.createElement('div');
-    bayarRow.className='tape-line';
+    bayarRow.className = 'sub-row';
     bayarRow.innerHTML = `<span>BAYAR</span><span>${formatRupiah(uangBayar)}</span>`;
     body.appendChild(bayarRow);
 
     const kembalianRow = document.createElement('div');
-    kembalianRow.className='tape-line';
+    kembalianRow.className = 'sub-row';
     kembalianRow.style.fontWeight = '700';
     kembalianRow.style.color = 'var(--ink)';
     kembalianRow.innerHTML = `<span>KEMBALIAN</span><span>${formatRupiah(kembalian)}</span>`;
