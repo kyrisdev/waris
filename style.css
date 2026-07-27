@@ -1,4 +1,4 @@
-root {
+:root {
         --bg: #1b1815;
         --bg2: #23201b;
         --paper: #fbf6e9;
@@ -145,7 +145,3 @@ root {
     #resetBtn.show { display: block; animation: printIn 0.3s ease; }
 
     ::selection { background: var(--accent); color: var(--bg); }
-
-
-.tape-line span:first-child{min-width:120px}
-.tape-line span:last-child{margin-left:auto;text-align:right;white-space:nowrap}
